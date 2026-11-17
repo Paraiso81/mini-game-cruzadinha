@@ -1,0 +1,169 @@
+/* Variáveis globais, reset e tipografia — Tema Clean & Moderno (SPTech) */
+:root {
+  --cor-fundo: #f4f6f9;
+  --cor-superficie: #ffffff;
+  --cor-superficie-suave: #f8fafc;
+  --cor-borda: #dce3ec;
+  --cor-texto: #1b263b;
+  --cor-texto-suave: #526075;
+
+  --cor-primaria: #d90429;
+  --cor-primaria-hover: #b80322;
+  --cor-tech: #0096c7;
+  --cor-tech-suave: #e6f6fc;
+  --cor-marinho: #1b263b;
+
+  --cor-sucesso: #2a9d8f;
+  --cor-sucesso-fundo: #e6f7f5;
+  --cor-erro: #e63946;
+  --cor-erro-fundo: #fdebed;
+
+  --cor-facil-fundo: #e6f7f5;
+  --cor-facil-texto: #1b7a6f;
+  --cor-medio-fundo: #fff4e5;
+  --cor-medio-texto: #b45309;
+  --cor-dificil-fundo: #fdebed;
+  --cor-dificil-texto: #c1121f;
+
+  --raio-borda: 12px;
+  --raio-pequeno: 8px;
+  --sombra-card: 0 6px 20px rgba(27, 38, 59, 0.06);
+  --sombra-modal: 0 18px 45px rgba(27, 38, 59, 0.22);
+  --transicao: 0.18s ease;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family:
+    "Segoe UI",
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    Roboto,
+    sans-serif;
+  background-color: var(--cor-fundo);
+  color: var(--cor-texto);
+  line-height: 1.5;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  background: none;
+}
+
+.container {
+  width: 100%;
+  max-width: 1320px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.etiqueta-disciplina {
+  display: inline-block;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--cor-primaria);
+}
+
+/* Botões reutilizáveis */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 10px 18px;
+  border-radius: var(--raio-pequeno);
+  font-size: 0.925rem;
+  font-weight: 600;
+  transition:
+    transform var(--transicao),
+    background-color var(--transicao),
+    border-color var(--transicao),
+    color var(--transicao);
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.btn-primario {
+  background-color: var(--cor-primaria);
+  color: #ffffff;
+}
+
+.btn-primario:hover {
+  background-color: var(--cor-primaria-hover);
+}
+
+.btn-secundario {
+  background-color: var(--cor-marinho);
+  color: #ffffff;
+}
+
+.btn-secundario:hover {
+  background-color: #2b3c5c;
+}
+
+.btn-contorno {
+  background-color: var(--cor-superficie);
+  color: var(--cor-texto);
+  border: 1px solid var(--cor-borda);
+}
+
+.btn-contorno:hover {
+  border-color: var(--cor-tech);
+  color: var(--cor-tech);
+  background-color: var(--cor-tech-suave);
+}
+
+/* Badges de nível */
+.badge-nivel,
+.badge-nivel-header {
+  display: inline-flex;
+  align-items: center;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.badge-nivel-header {
+  padding: 6px 14px;
+  font-size: 0.85rem;
+}
+
+.badge-facil {
+  background-color: var(--cor-facil-fundo);
+  color: var(--cor-facil-texto);
+}
+
+.badge-medio {
+  background-color: var(--cor-medio-fundo);
+  color: var(--cor-medio-texto);
+}
+
+.badge-dificil {
+  background-color: var(--cor-dificil-fundo);
+  color: var(--cor-dificil-texto);
+}
