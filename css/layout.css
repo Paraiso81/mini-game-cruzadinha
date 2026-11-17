@@ -1,0 +1,285 @@
+/* Layout da página, cabeçalho, barra de controles, painéis e modal de nível */
+
+.cabecalho {
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 16px 0;
+}
+
+.cabecalho-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.titulo-grupo h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  line-height: 1.2;
+}
+
+.status-grupo {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+.contador-box {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  background-color: var(--cor-superficie-suave);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+}
+
+.contador-rotulo {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+.contador-valor {
+  font-size: 0.95rem;
+  color: var(--cor-marinho);
+  font-weight: 700;
+}
+
+/* Barra de controles */
+.barra-controles {
+  background-color: var(--cor-superficie);
+  border-bottom: 1px solid var(--cor-borda);
+  padding: 12px 0;
+  margin-bottom: 24px;
+}
+
+.controles-conteudo {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.acoes-principais,
+.acoes-tabuleiro {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Conteúdo Principal */
+.conteudo-principal {
+  padding-bottom: 40px;
+}
+
+.banner-resultado {
+  padding: 12px 18px;
+  border-radius: var(--raio-pequeno);
+  margin-bottom: 20px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: 1px solid transparent;
+}
+
+.banner-vitoria {
+  background-color: var(--cor-sucesso-fundo);
+  color: var(--cor-facil-texto);
+  border-color: var(--cor-sucesso);
+}
+
+.banner-parcial {
+  background-color: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+  border-color: var(--cor-erro);
+}
+
+.grade-jogo {
+  display: grid;
+  grid-template-columns: minmax(0, 1.3fr) minmax(320px, 0.9fr);
+  gap: 24px;
+  align-items: start;
+}
+
+.painel {
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-borda);
+  box-shadow: var(--sombra-card);
+  padding: 20px;
+}
+
+.painel-pistas {
+  display: flex;
+  flex-direction: column;
+  gap: 22px;
+  max-height: 76vh;
+  overflow-y: auto;
+}
+
+/* Modal de Seleção de Nível */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background-color: rgba(27, 38, 59, 0.62);
+  backdrop-filter: blur(4px);
+}
+
+.modal-card {
+  position: relative;
+  width: 100%;
+  max-width: 720px;
+  background-color: var(--cor-superficie);
+  border-radius: 16px;
+  padding: 32px 28px;
+  box-shadow: var(--sombra-modal);
+  text-align: center;
+}
+
+.btn-fechar-modal {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--cor-texto-suave);
+  background-color: var(--cor-superficie-suave);
+  transition:
+    background-color var(--transicao),
+    color var(--transicao);
+}
+
+.btn-fechar-modal:hover {
+  background-color: var(--cor-erro-fundo);
+  color: var(--cor-erro);
+}
+
+.modal-titulo {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  margin: 8px 0 10px;
+}
+
+.modal-subtitulo {
+  font-size: 0.95rem;
+  color: var(--cor-texto-suave);
+  max-width: 540px;
+  margin: 0 auto 24px;
+}
+
+.opcoes-nivel {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.cartao-nivel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 22px 16px;
+  border-radius: var(--raio-borda);
+  border: 2px solid var(--cor-borda);
+  background-color: var(--cor-superficie-suave);
+  text-align: center;
+  transition:
+    transform var(--transicao),
+    border-color var(--transicao),
+    box-shadow var(--transicao),
+    background-color var(--transicao);
+}
+
+.cartao-nivel:hover {
+  transform: translateY(-3px);
+  background-color: var(--cor-superficie);
+  box-shadow: var(--sombra-card);
+}
+
+.cartao-nivel.nivel-facil:hover {
+  border-color: var(--cor-sucesso);
+}
+
+.cartao-nivel.nivel-medio:hover {
+  border-color: #d97706;
+}
+
+.cartao-nivel.nivel-dificil:hover {
+  border-color: var(--cor-primaria);
+}
+
+.nivel-tag {
+  font-size: 0.8rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 4px 12px;
+  border-radius: 999px;
+}
+
+.nivel-facil .nivel-tag {
+  background-color: var(--cor-facil-fundo);
+  color: var(--cor-facil-texto);
+}
+
+.nivel-medio .nivel-tag {
+  background-color: var(--cor-medio-fundo);
+  color: var(--cor-medio-texto);
+}
+
+.nivel-dificil .nivel-tag {
+  background-color: var(--cor-dificil-fundo);
+  color: var(--cor-dificil-texto);
+}
+
+.nivel-qtd {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+}
+
+.nivel-desc {
+  font-size: 0.85rem;
+  color: var(--cor-texto-suave);
+  line-height: 1.4;
+}
+
+/* Responsividade */
+@media (max-width: 980px) {
+  .grade-jogo {
+    grid-template-columns: 1fr;
+  }
+
+  .painel-pistas {
+    max-height: none;
+  }
+}
+
+@media (max-width: 680px) {
+  .opcoes-nivel {
+    grid-template-columns: 1fr;
+  }
+
+  .modal-card {
+    padding: 24px 18px;
+  }
+
+  .controles-conteudo {
+    justify-content: center;
+  }
+}
