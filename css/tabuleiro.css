@@ -1,0 +1,300 @@
+/* Estilos da matriz 2D da cruzadinha, células, numeração e lista de pistas */
+
+.barra-dica-ativa {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px 16px;
+  background-color: var(--cor-tech-suave);
+  border-left: 4px solid var(--cor-tech);
+  border-radius: var(--raio-pequeno);
+  margin-bottom: 18px;
+}
+
+.dica-ativa-meta {
+  font-size: 0.78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--cor-tech);
+}
+
+.dica-ativa-texto {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--cor-marinho);
+}
+
+.tabuleiro-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  padding: 8px 4px;
+  display: flex;
+  justify-content: center;
+}
+
+.tabuleiro-grid {
+  --tamanho-celula: 36px;
+  display: grid;
+  gap: 3px;
+  width: max-content;
+  padding: 10px;
+  background-color: var(--cor-superficie-suave);
+  border: 1px solid var(--cor-borda);
+  border-radius: var(--raio-pequeno);
+}
+
+.celula-vazia {
+  width: var(--tamanho-celula);
+  height: var(--tamanho-celula);
+}
+
+.celula-ativa {
+  position: relative;
+  width: var(--tamanho-celula);
+  height: var(--tamanho-celula);
+  background-color: var(--cor-superficie);
+  border: 1.5px solid #9eb1c7;
+  border-radius: 5px;
+  transition:
+    background-color var(--transicao),
+    border-color var(--transicao),
+    box-shadow var(--transicao);
+}
+
+.celula-ativa.celula-destacada {
+  background-color: var(--cor-tech-suave);
+  border-color: var(--cor-tech);
+}
+
+.celula-ativa:focus-within {
+  border-color: var(--cor-marinho);
+  box-shadow: 0 0 0 2px rgba(0, 150, 199, 0.28);
+  z-index: 2;
+}
+
+.numero-celula {
+  position: absolute;
+  top: 1px;
+  left: 3px;
+  font-size: 0.62rem;
+  font-weight: 800;
+  line-height: 1;
+  color: var(--cor-texto-suave);
+  pointer-events: none;
+  user-select: none;
+}
+
+.input-letra {
+  width: 100%;
+  height: 100%;
+  border: none;
+  background: transparent;
+  text-align: center;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  text-transform: uppercase;
+  padding-top: 4px;
+  outline: none;
+  caret-color: transparent;
+}
+
+/* Estados de verificação no tabuleiro */
+.celula-ativa.casa-correta {
+  background-color: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+}
+
+.celula-ativa.casa-correta .input-letra {
+  color: var(--cor-facil-texto);
+}
+
+.celula-ativa.casa-errada {
+  background-color: var(--cor-erro-fundo);
+  border-color: var(--cor-erro);
+}
+
+.celula-ativa.casa-errada .input-letra {
+  color: var(--cor-erro);
+}
+
+/* Legenda de cores */
+.legenda-cores {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 14px;
+  padding-top: 12px;
+  border-top: 1px solid var(--cor-borda);
+}
+
+.legenda-item {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.82rem;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+.legenda-amostra {
+  width: 14px;
+  height: 14px;
+  border-radius: 4px;
+  display: inline-block;
+  border: 1.5px solid transparent;
+}
+
+.amostra-ativa {
+  background-color: var(--cor-tech-suave);
+  border-color: var(--cor-tech);
+}
+
+.amostra-correta {
+  background-color: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+}
+
+.amostra-errada {
+  background-color: var(--cor-erro-fundo);
+  border-color: var(--cor-erro);
+}
+
+/* Painel de Pistas */
+.titulo-pistas {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid var(--cor-borda);
+}
+
+.indicador-direcao {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 24px;
+  height: 24px;
+  border-radius: 6px;
+  background-color: var(--cor-marinho);
+  color: #ffffff;
+  font-size: 0.85rem;
+}
+
+.lista-pistas {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.item-pista {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: var(--raio-pequeno);
+  border: 1px solid var(--cor-borda);
+  background-color: var(--cor-superficie-suave);
+  cursor: pointer;
+  transition:
+    border-color var(--transicao),
+    background-color var(--transicao),
+    transform var(--transicao);
+}
+
+.item-pista:hover {
+  border-color: var(--cor-tech);
+  background-color: var(--cor-superficie);
+}
+
+.item-pista.pista-ativa {
+  border-color: var(--cor-tech);
+  background-color: var(--cor-tech-suave);
+}
+
+.pista-numero {
+  min-width: 26px;
+  height: 26px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  background-color: var(--cor-superficie);
+  border: 1px solid var(--cor-borda);
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--cor-marinho);
+  flex-shrink: 0;
+}
+
+.pista-conteudo {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.pista-texto {
+  font-size: 0.9rem;
+  color: var(--cor-texto);
+  line-height: 1.4;
+}
+
+.pista-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.pista-tamanho {
+  font-size: 0.75rem;
+  color: var(--cor-texto-suave);
+  font-weight: 600;
+}
+
+/* Estados de verificação nas pistas */
+.item-pista.pista-correta {
+  background-color: var(--cor-sucesso-fundo);
+  border-color: var(--cor-sucesso);
+}
+
+.item-pista.pista-correta .pista-numero {
+  background-color: var(--cor-sucesso);
+  border-color: var(--cor-sucesso);
+  color: #ffffff;
+}
+
+.item-pista.pista-errada {
+  background-color: var(--cor-erro-fundo);
+  border-color: var(--cor-erro);
+}
+
+.item-pista.pista-errada .pista-numero {
+  background-color: var(--cor-erro);
+  border-color: var(--cor-erro);
+  color: #ffffff;
+}
+
+@media (max-width: 520px) {
+  .tabuleiro-grid {
+    gap: 2px;
+    padding: 6px;
+  }
+
+  .input-letra {
+    font-size: 0.85rem;
+  }
+
+  .numero-celula {
+    font-size: 0.54rem;
+  }
+}
