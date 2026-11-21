@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cruzadinha — Arquitetura Computacional</title>
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/tabuleiro.css">
+    <script src="js/palavras.js" defer></script>
+    <script src="js/gerador.js" defer></script>
+    <script src="js/tabuleiro.js" defer></script>
+    <script src="js/jogo.js" defer></script>
+</head>
+<body>
+    <!-- Cabeçalho Institucional & Barra de Status -->
+    <header class="cabecalho">
+        <div class="container cabecalho-conteudo">
+            <div class="titulo-grupo">
+                <span class="etiqueta-disciplina">Arquitetura Computacional · SPTech</span>
+                <h1>Cruzadinha Tech</h1>
+            </div>
+
+            <div class="status-grupo">
+                <span id="badge-nivel-atual" class="badge-nivel-header badge-facil">
+                    Selecione um nível
+                </span>
+                <div class="contador-box" aria-live="polite">
+                    <span class="contador-rotulo">Acertos</span>
+                    <strong id="contador-acertos" class="contador-valor">0 de 12 palavras</strong>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Barra de Controles -->
+    <section class="barra-controles" aria-label="Controles do jogo">
+        <div class="container controles-conteudo">
+            <div class="acoes-principais">
+                <button id="btn-conferir" type="button" class="btn btn-primario">
+                    Conferir
+                </button>
+                <button id="btn-reiniciar" type="button" class="btn btn-secundario">
+                    Reiniciar
+                </button>
+            </div>
+
+            <div class="acoes-tabuleiro">
+                <button id="btn-novo-tabuleiro" type="button" class="btn btn-contorno">
+                    Novo Tabuleiro
+                </button>
+                <button id="btn-trocar-nivel" type="button" class="btn btn-contorno">
+                    Trocar Nível
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conteúdo Principal -->
+    <main class="container conteudo-principal">
+        <!-- Banner de Resultado da Conferência -->
+        <div id="banner-resultado" class="banner-resultado" role="status" hidden>
+            <p id="banner-resultado-texto"></p>
+        </div>
+
+        <div class="grade-jogo">
+            <!-- Coluna Esquerda: Dica Ativa + Tabuleiro -->
+            <section class="painel painel-tabuleiro" aria-label="Tabuleiro da cruzadinha">
+                <div class="barra-dica-ativa">
+                    <span id="dica-ativa-meta" class="dica-ativa-meta">—</span>
+                    <p id="dica-ativa-texto" class="dica-ativa-texto">
+                        Selecione um nível para iniciar o desafio.
+                    </p>
+                </div>
+
+                <div class="tabuleiro-wrapper">
+                    <div id="tabuleiro-grid" class="tabuleiro-grid" role="grid" aria-label="Grade de palavras cruzadas"></div>
+                </div>
+
+                <div class="legenda-cores">
+                    <span class="legenda-item">
+                        <i class="legenda-amostra amostra-ativa"></i> Palavra selecionada
+                    </span>
+                    <span class="legenda-item">
+                        <i class="legenda-amostra amostra-correta"></i> Palavra certa
+                    </span>
+                    <span class="legenda-item">
+                        <i class="legenda-amostra amostra-errada"></i> Palavra errada
+                    </span>
+                </div>
+            </section>
+
+            <!-- Coluna Direita: Painel de Pistas Horizontais e Verticais -->
+            <aside class="painel painel-pistas" aria-label="Pistas da cruzadinha">
+                <div class="grupo-pistas">
+                    <h2 class="titulo-pistas">
+                        <span class="indicador-direcao">→</span> Horizontais
+                    </h2>
+                    <ul id="lista-horizontais" class="lista-pistas"></ul>
+                </div>
+
+                <div class="grupo-pistas">
+                    <h2 class="titulo-pistas">
+                        <span class="indicador-direcao">↓</span> Verticais
+                    </h2>
+                    <ul id="lista-verticais" class="lista-pistas"></ul>
+                </div>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Modal de Seleção de Nível -->
+    <div id="modal-nivel" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
+        <div class="modal-card">
+            <button id="btn-fechar-modal" type="button" class="btn-fechar-modal" aria-label="Fechar seleção de nível" hidden>
+                ✕
+            </button>
+
+            <span class="etiqueta-disciplina">Escolha sua dificuldade</span>
+            <h2 id="modal-titulo" class="modal-titulo">Cruzadinha de Arquitetura Computacional</h2>
+            <p class="modal-subtitulo">
+                As palavras se cruzam automaticamente na horizontal e na vertical. Escolha quantas palavras deseja enfrentar:
+            </p>
+
+            <div class="opcoes-nivel">
+                <button type="button" class="cartao-nivel nivel-facil" data-selecionar-nivel="facil">
+                    <span class="nivel-tag">Fácil</span>
+                    <strong class="nivel-qtd">12 palavras</strong>
+                    <span class="nivel-desc">Prioriza os conceitos essenciais do tabuleiro.</span>
+                </button>
+
+                <button type="button" class="cartao-nivel nivel-medio" data-selecionar-nivel="medio">
+                    <span class="nivel-tag">Médio</span>
+                    <strong class="nivel-qtd">14 palavras</strong>
+                    <span class="nivel-desc">Equilíbrio entre conceitos intermediários e base.</span>
+                </button>
+
+                <button type="button" class="cartao-nivel nivel-dificil" data-selecionar-nivel="dificil">
+                    <span class="nivel-tag">Difícil</span>
+                    <strong class="nivel-qtd">16 palavras</strong>
+                    <span class="nivel-desc">Desafio completo com todos os termos da disciplina.</span>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
