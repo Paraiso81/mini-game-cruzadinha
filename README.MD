@@ -2,7 +2,7 @@
 
 Mini-game estático de palavras cruzadas desenvolvido em **HTML5, CSS3 e JavaScript puros** para treinar os conceitos da disciplina de Arquitetura Computacional (SPTech).
 
-> **Link do site publicado (GitHub Pages):** _Em breve (adicione aqui após publicar no GitHub Pages: `https://SEU-USUARIO.github.io/arqcomp-cruzadinha/`)_
+> **Link do site publicado (GitHub Pages):** _Em breve (adicione aqui após publicar no GitHub Pages: `https://paraiso81.github.io/arqcomp-cruzadinha/`)_
 
 ---
 
@@ -24,26 +24,24 @@ Mini-game estático de palavras cruzadas desenvolvido em **HTML5, CSS3 e JavaScr
 
 ## Lista de Palavras e Pistas
 
-> As pistas abaixo estão com texto temporário (*Lorem ipsum*) para preenchimento com suas próprias palavras (máximo de 15 palavras por pista, sem incluir a resposta ou sigla por extenso).
-
 | Nº | Termo | No Tabuleiro | Nível | Pista |
 | :-: | :--- | :--- | :---: | :--- |
-| 1 | CPU | `CPU` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 2 | ULA | `ULA` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 3 | UC (Unidade de Controle) | `UC` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 4 | registradores | `REGISTRADORES` | Médio | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 5 | RAM | `RAM` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 6 | ROM | `ROM` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 7 | EEPROM | `EEPROM` | Difícil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 8 | Flash | `FLASH` | Fácil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 9 | cache | `CACHE` | Médio | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 10 | memória de massa (armazenamento) | `MEMORIADEMASSA` | Difícil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 11 | DMA | `DMA` | Médio | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 12 | address bus (barramento de endereço) | `ADDRESSBUS` | Difícil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 13 | data bus (barramento de dados) | `DATABUS` | Difícil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 14 | microcontrolador | `MICROCONTROLADOR` | Difícil | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 15 | dual core | `DUALCORE` | Médio | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
-| 16 | quad core | `QUADCORE` | Médio | Lorem ipsum dolor sit amet, consectetur adipiscing elit. |
+| 1 | CPU | `CPU` | Fácil | Responsável por executar instruções. |
+| 2 | ULA | `ULA` | Fácil | Faz contas aritméticas e lógicas |
+| 3 | UC (Unidade de Controle) | `UC` | Fácil | Lê cada instrução, descobre o que ela pede e envia as ordens para as outras partes |
+| 4 | registradores | `REGISTRADORES` | Médio | Uma memória pequena que guarda o dado que esta sendo usado. |
+| 5 | RAM | `RAM` | Fácil | Memória temporária que guarda os programas que estão rodando. |
+| 6 | ROM | `ROM` | Fácil | Memória não volátil que guarda o que o computador precisa para iniciar |
+| 7 | EEPROM | `EEPROM` | Difícil | Memória pequena não volátil que guarda dados que sobrevivem ao desligamento utilizada no arduino |
+| 8 | Flash | `FLASH` | Fácil | Tipo de armazenamento não volátil, regravável em blocos, usado em SSDs e pendrives |
+| 9 | cache | `CACHE` | Médio | Memória rápida e pequena que fica dentro da CPU. |
+| 10 | memória de massa (armazenamento) | `MEMORIADEMASSA` | Difícil | Memória reposável por fazer a persistência dos dados. |
+| 11 | DMA | `DMA` | Médio | Permite que um dispositivo tenha acesso direto a memória RAM. |
+| 12 | address bus (barramento de endereço) | `ADDRESSBUS` | Difícil | Conjunto de linhas de comunicação físicas que permite à CPU especificar a localização exata na memória RAM |
+| 13 | data bus (barramento de dados) | `DATABUS` | Difícil | Canal de comunicação bidirecional dentro de um computador responsável por transportar as informações. |
+| 14 | microcontrolador | `MICROCONTROLADOR` | Difícil | Conjunto de um único chip CPU, memórias e dispositivos de entrada e saída. |
+| 15 | dual core | `DUALCORE` | Médio | Um processador com dois núcleos. |
+| 16 | quad core | `QUADCORE` | Médio | Um processador com quatro núcleos. |
 
 ---
 
@@ -53,7 +51,7 @@ Mini-game estático de palavras cruzadas desenvolvido em **HTML5, CSS3 e JavaScr
 Construir um mini-game web estático de palavras cruzadas sobre **Arquitetura Computacional** utilizando **HTML5, CSS3 e JavaScript puros**, cumprindo todos os requisitos do PDF da atividade avaliativa da SPTech e organizando o código de forma modular nas pastas `css/` e `js/`.
 
 ### Principais Funcionalidades Alinhadas
-1. **Banco com as 16 palavras oficiais** em um array de objetos com `{ id, termo, palavra, nivel, pista }`, divididas de forma equilibrada entre `facil` (6), `medio` (5) e `dificil` (5), com pistas temporárias (*Lorem ipsum*) para preenchimento posterior com suas próprias palavras.
+1. **Banco com as 16 palavras oficiais** em um array de objetos com `{ id, termo, palavra, nivel, pista }`, divididas de forma equilibrada entre `facil` (6), `medio` (5) e `dificil` (5), com pistas próprias para cada termo.
 2. **Seleção de Nível antes de iniciar a partida (e troca rápida no topo)**:
    - **Fácil**: sorteia **12 palavras** priorizando as fáceis;
    - **Médio**: sorteia **14 palavras** priorizando médias e fáceis;
@@ -157,7 +155,7 @@ flowchart TD
     termo: "CPU",
     palavra: "CPU",
     nivel: "facil",
-    pista: "Lorem ipsum dolor sit amet, consectetur adipiscing elit."
+    pista: "Responsável por executar instruções."
   }
   ```
 - Função `sortearPalavrasPorNivel(nivel)`:
